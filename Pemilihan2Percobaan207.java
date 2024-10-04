@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Pemilihan2Percobaan207 {
     public static void main(String[] args) {
-        Scanner tujuh = new Scanner(System.in);
+        Scanner input07 = new Scanner(System.in);
 
         int pilihan_menu;
-        double diskon,harga,total_bayar;
-        String member;
+        double diskon,harga ,total_bayar;
+        String member, pembayaran;
 
         System.out.println("-------------------------");
         System.out.println("===== MENU KAFE JTI =====");
@@ -16,13 +16,15 @@ public class Pemilihan2Percobaan207 {
         System.out.println("3. Paket Bundling (Ricebowl + Ice Tea)");
         System.out.println("--------------------------------------");
         System.out.print("masukkan angka dari menu yang di pilih = ");
-        pilihan_menu = tujuh.nextInt();
-        tujuh.nextLine();
+        pilihan_menu = input07.nextInt();
+        input07.nextLine();
         System.out.print("Apakah punya member (y/n) ? = ");
-        member = tujuh.nextLine();
+        member = input07.nextLine();
+        System.out.print("Pembayaran cash / QRIS = ");
+        pembayaran = input07.nextLine();
         System.out.println("--------------------------------------");
 
-        if (member.equalsIgnoreCase("y")) {
+        if (member.equals("y")) {
             diskon = 0.10;
             System.out.println("Besar diskon = 10%");
             if (pilihan_menu == 1) {
@@ -43,8 +45,13 @@ public class Pemilihan2Percobaan207 {
             }
 
             total_bayar = harga - (harga * diskon);
+            if (pembayaran.equalsIgnoreCase("QRIS")) {
+                System.out.println("Potongan harga(QRIS) = 1000");
+                total_bayar = total_bayar - 1000;
+                System.out.println("Total Bayar = " + total_bayar);           
+            }
             System.out.println("Total bayar setelah diskon = " + total_bayar);
-        } else if (member.equalsIgnoreCase("n")) {
+        } else if (member.equals("n")) {
             if (pilihan_menu == 1) {
                 harga = 14000;
                 System.out.println("Harga Ricebowl = " + harga);
@@ -61,15 +68,20 @@ public class Pemilihan2Percobaan207 {
                 System.out.println("Masukkan pilihan menu dengan benar");
                 return;
             }
-
+            if (pembayaran.equals("QRIS")) {
+                System.out.println("Potongan harga(QRIS) = 1000");
+                harga = harga - 1000;         
+            }
             System.out.println("Total bayar" + harga);
-            
-            
+
+
         } else {
             System.out.println("Member tidak valid");
         }
-        System.out.println("______________________________________");
+        
+        System.out.println("--------------------------------------");
     }
 }
+
 
 
